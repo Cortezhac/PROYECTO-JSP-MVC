@@ -4,6 +4,10 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="modelDAO.VideojuegoDAO"%>
+<%@page import="model.Videojuego"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,17 +23,29 @@
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th>DUI</th>
+                        <th>TIPO</th>
+                        <th>DESARROLLADORA</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
+
                 <tbody>
+                    <%
+                    VideojuegoDAO game = new VideojuegoDAO();
+                    List<Videojuego> list = game.listar();// Traigo la lista de la bd
+                    Iterator<Videojuego> iterador = list.iterator();
+                    Videojuego juego = null;
+                    while(iterador.hasNext()){
+                        juego = iterador.next();
+                    %>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><%= juego.getId_videojuego() %></td>
+                        <td><%= juego.getNomb_videojuego() %></td>
+                        <td><%= juego.getTipo_videojuego() %></td>
+                        <td><%= juego.getCompania_videojuego() %></td>
+                        <td>EDIT REMOVE</td>
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
 

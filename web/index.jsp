@@ -14,7 +14,7 @@
     <body>
         <h1>Crud JSP</h1>
         <div>
-            <a href="controller?=list">Listar</a>
+            <a href="Controlador?accion=list">Listar</a>
         </div>
     </body>
 </html>

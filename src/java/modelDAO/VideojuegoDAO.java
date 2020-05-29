@@ -36,12 +36,13 @@ public class VideojuegoDAO implements CRUD{
             cone = cn.getConnection();
             sqlStatement = cone.prepareStatement(sqlQueryStatement);
             miResultSet = sqlStatement.executeQuery();
-            while (miResultSet.next()) {                
-                Juego.setId_videojuego(miResultSet.getInt("id_videojuego"));
-                Juego.setNomb_videojuego(miResultSet.getNString("nom_videojuego"));
-                Juego.setTipo_videojuego(miResultSet.getString("tipo_videojuego"));
-                Juego.setCompania_videojuego(miResultSet.getString("compania_videojuego"));
-                ListaVideojuegos.add(Juego);
+            while (miResultSet.next()) {
+                Videojuego Juegos = new Videojuego();
+                Juegos.setId_videojuego(miResultSet.getInt("id_videojuego"));
+                Juegos.setNomb_videojuego(miResultSet.getNString("nom_videojuego"));
+                Juegos.setTipo_videojuego(miResultSet.getString("tipo_videojuego"));
+                Juegos.setCompania_videojuego(miResultSet.getString("compania_videojuego"));
+                ListaVideojuegos.add(Juegos);
             }
         } catch (SQLException ex) {
             System.out.println("Error x01 " + ex);
