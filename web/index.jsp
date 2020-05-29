@@ -12,6 +12,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Crud JSP</h1>
+        <div>
+            <a href="controller?=list">Listar</a>
+        </div>
     </body>
 </html>
