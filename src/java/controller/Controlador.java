@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Videojuego;
+import modelDAO.VideojuegoDAO;
 
 /**
  *
@@ -22,7 +24,8 @@ public class Controlador extends HttpServlet {
     String list = "vistas/list.jsp";
     String add = "vistas/add.jsp";
     String edit = "vistas/edit.jsp";
-    
+    Videojuego Vjuego = new Videojuego();
+    VideojuegoDAO VjuegoDAO = new VideojuegoDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,7 +55,18 @@ public class Controlador extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
         if (action.equalsIgnoreCase("list")) {
-            acceso=list;
+            acceso=list; // Path de acceso
+        }else if(action.equalsIgnoreCase("add")){
+            acceso = add;
+        }else if(action.equalsIgnoreCase("Agregar")){
+            String nom_juego = request.getParameter("txtNombre");
+            String compania_juego = request.getParameter("txtCompania");
+            String tipo_juego = request.getParameter("txtTipo");
+            Vjuego.setNomb_videojuego(nom_juego);
+            Vjuego.setCompania_videojuego(compania_juego);
+            Vjuego.setTipo_videojuego(tipo_juego);
+            VjuegoDAO.add(Vjuego);
+            acceso=list; // Cambiando path de acceso 
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

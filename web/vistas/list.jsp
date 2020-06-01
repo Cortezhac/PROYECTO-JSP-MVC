@@ -18,6 +18,7 @@
     <body>
         <div>
             <h1>Listar Personas</h1>
+            <a href="Controlador?accion=add">Agregar Nuevo</a>
             <table border="1">
                 <thead>
                     <tr>
@@ -43,7 +44,10 @@
                         <td><%= juego.getNomb_videojuego() %></td>
                         <td><%= juego.getTipo_videojuego() %></td>
                         <td><%= juego.getCompania_videojuego() %></td>
-                        <td>EDIT REMOVE</td>
+                        <td>
+                            <a>EDIT</a>
+                            <a>REMOVE</a>
+                        </td>
                     </tr>
                     <% } %>
                 </tbody>

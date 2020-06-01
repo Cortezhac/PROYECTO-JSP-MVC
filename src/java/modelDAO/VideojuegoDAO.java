@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Contiene todas las funciones del CRUD dejandolas disponibles para los otros  objetos
  */
 package modelDAO;
 
@@ -23,7 +21,7 @@ import model.Videojuego;
 public class VideojuegoDAO implements CRUD{
     
     Conexion cn = new Conexion(); // Proporciona la conexion con el servidor
-    Connection cone; // obj de mysql.jdbc.Driver
+    Connection cone; // obj de mysql.jdbc.Driver guarda la conexion
     PreparedStatement sqlStatement; // PrepareStatement para el  sqlQuery
     ResultSet miResultSet; // Pemite manejar los datos de la BD
     Videojuego Juego = new Videojuego(); // obj videojuego
@@ -45,7 +43,7 @@ public class VideojuegoDAO implements CRUD{
                 ListaVideojuegos.add(Juegos);
             }
         } catch (SQLException ex) {
-            System.out.println("Error x01 " + ex);
+            System.out.println("Error xVDAO01 :" + ex);
         }
         return ListaVideojuegos;
     }
@@ -57,7 +55,17 @@ public class VideojuegoDAO implements CRUD{
 
     @Override
     public boolean add(Videojuego videojuego) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sqlQuery = "INSERT INTO videojuego (nom_videojuego, tipo_videojuego, compania_videojuego) VALUES "
+                + "('"+ videojuego.getNomb_videojuego() +"','"+ videojuego.getTipo_videojuego() + "','"+videojuego.getCompania_videojuego()+"');";
+        try {
+            cone = cn.getConnection();// Obtiene la conexion y la almacena
+            sqlStatement = cone.prepareStatement(sqlQuery); // se prara el query 
+            sqlStatement.executeUpdate(); // Ejecuta el queryalmacenado
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error xVDAO02 :" + e);
+        }
+        return false;
     }
 
     @Override
