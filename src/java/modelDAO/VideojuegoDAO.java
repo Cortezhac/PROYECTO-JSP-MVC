@@ -43,14 +43,28 @@ public class VideojuegoDAO implements CRUD{
                 ListaVideojuegos.add(Juegos);
             }
         } catch (SQLException ex) {
-            System.out.println("Error xVDAO01 :" + ex);
+            System.out.println("Error x001 " + this.getClass() + " "+ ex);
         }
         return ListaVideojuegos;
     }
 
     @Override
     public Videojuego list(int id_videojuego) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sqlQuery = "SELECT * FROM videojuego WHERE id_videojuego = " + id_videojuego + ";";
+        try {
+            cone = cn.getConnection();
+            sqlStatement = cone.prepareStatement(sqlQuery);
+            miResultSet = sqlStatement.executeQuery(sqlQuery); // devuelve un obj de tipo ResulSet
+            while (miResultSet.next()) {
+                Juego.setId_videojuego(miResultSet.getInt("id_videojuego"));
+                Juego.setNomb_videojuego(miResultSet.getString("nom_videojuego"));
+                Juego.setTipo_videojuego(miResultSet.getString("tipo_videojuego"));
+                Juego.setCompania_videojuego(miResultSet.getString("compania_videojuego"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error x002 " + this.getClass() + " "+ e);
+        }
+        return Juego;
     }
 
     @Override
@@ -60,16 +74,25 @@ public class VideojuegoDAO implements CRUD{
         try {
             cone = cn.getConnection();// Obtiene la conexion y la almacena
             sqlStatement = cone.prepareStatement(sqlQuery); // se prara el query 
-            sqlStatement.executeUpdate(); // Ejecuta el queryalmacenado
+            sqlStatement.executeUpdate(); // Ejecuta el queryalmacenado y retorna un entero
             return true;
         } catch (SQLException e) {
-            System.out.println("Error xVDAO02 :" + e);
+            System.out.println("Error x003 " + this.getClass() + " "+ e);
         }
         return false;
     }
 
     @Override
     public boolean edit(Videojuego videojuego) {
+        String sqlQuery = "UPDATE videojuego SET nombre_videojuego = '" + videojuego.getNomb_videojuego() + "', compania_juego = '"+
+            videojuego.getCompania_videojuego() + "', tipo_videojuego = '"+ videojuego.getTipo_videojuego()+ "' WHERE id_videojuego=" + videojuego.getId_videojuego() + ";";
+        try {
+            cone = cn.getConnection();
+            sqlStatement = cone.prepareStatement(sqlQuery);
+            sqlStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error x004 " + this.getClass() + " " + e);
+        }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

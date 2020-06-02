@@ -45,8 +45,8 @@
                         <td><%= juego.getTipo_videojuego() %></td>
                         <td><%= juego.getCompania_videojuego() %></td>
                         <td>
-                            <a>EDIT</a>
-                            <a>REMOVE</a>
+                            <a href="Controlador?accion=edit&id=<%=juego.getId_videojuego()%>">EDIT</a>
+                            <a href="Controlador?accion=remove&id+<%=juego.getId_videojuego()%>">REMOVE</a>
                         </td>
                     </tr>
                     <% } %>

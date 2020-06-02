@@ -19,7 +19,15 @@ public class Videojuego {
         
     }
     
-    public Videojuego(String nombreVideojuego, String tipoVideojuego, String companiaVideojuego){
+    public Videojuego(Videojuego juego){
+        this.id_videojuego = juego.getId_videojuego();
+        this.nomb_videojuego = juego.getNomb_videojuego();
+        this.tipo_videojuego = juego.getTipo_videojuego();
+        this.compania_videojuego = juego.getCompania_videojuego();
+    }
+    
+    public Videojuego( int id,String nombreVideojuego, String tipoVideojuego, String companiaVideojuego){
+        this.id_videojuego = id;
         this.nomb_videojuego = nombreVideojuego;
         this.tipo_videojuego = tipoVideojuego;
         this.compania_videojuego = companiaVideojuego;

@@ -21,11 +21,12 @@ import modelDAO.VideojuegoDAO;
  */
 public class Controlador extends HttpServlet {
 
+    // Rutas de las vistas
     String list = "vistas/list.jsp";
     String add = "vistas/add.jsp";
     String edit = "vistas/edit.jsp";
-    Videojuego Vjuego = new Videojuego();
-    VideojuegoDAO VjuegoDAO = new VideojuegoDAO();
+    Videojuego Vjuego = new Videojuego(); // obj videojuego
+    VideojuegoDAO VjuegoDAO = new VideojuegoDAO(); // DAO funciones del CRUD
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,6 +54,7 @@ public class Controlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acceso = "";
+        //Contiene la accion a ejecutar de la paguina
         String action = request.getParameter("accion");
         if (action.equalsIgnoreCase("list")) {
             acceso=list; // Path de acceso
@@ -67,6 +69,21 @@ public class Controlador extends HttpServlet {
             Vjuego.setTipo_videojuego(tipo_juego);
             VjuegoDAO.add(Vjuego);
             acceso=list; // Cambiando path de acceso 
+        }else if(action.equalsIgnoreCase("edit")){
+            request.setAttribute("idJuego", request.getParameter("id"));
+            acceso=edit; // path de la vista editar
+        }else if(action.equalsIgnoreCase("actualizar")){
+            String id = request.getParameter("id");
+            String nombrejuego = request.getParameter("txtNombre");
+            String tipojuego = request.getParameter("txtTipoJuego");
+            String companiajuego = request.getParameter("txtCompania");
+            // Llenar objeto
+            Vjuego.setId_videojuego(Integer.parseInt(id));
+            Vjuego.setNomb_videojuego(nombrejuego);
+            Vjuego.setCompania_videojuego(companiajuego);
+            Vjuego.setTipo_videojuego(tipojuego);
+            VjuegoDAO.edit(Vjuego);
+            acceso=list; // Cambiar direccion
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
