@@ -13,11 +13,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="Recursos/css/Main.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
-            <h1>Listar Personas</h1>
+        <div class="container">
+            <h1>Listar</h1>
             <a href="Controlador?accion=add">Agregar Nuevo</a>
             <table border="1">
                 <thead>

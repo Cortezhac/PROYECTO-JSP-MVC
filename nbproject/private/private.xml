@@ -5,11 +5,14 @@
         <group>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/vistas/list.jsp</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/index.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/vistas/delete.jsp</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/vistas/add.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/Recursos/css/Main.css</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/src/java/controller/Controlador.java</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/src/java/model/Videojuego.java</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/src/java/modelDAO/VideojuegoDAO.java</file>
             <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/vistas/edit.jsp</file>
+            <file>file:/E:/Admin/Documents/NetBeansProjects/Youtube/PatronMVC/web/Recursos/js/Validacion.js</file>
         </group>
     </open-files>
 </project-private>

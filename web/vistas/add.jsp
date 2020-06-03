@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="Recursos/css/Main.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
+        <div class="container">
             <h1>Agregar persona</h1>
             <form action="Controlador">
                 <label for="txtNombre">Nombre Juego</label>

@@ -84,7 +84,7 @@ public class VideojuegoDAO implements CRUD{
 
     @Override
     public boolean edit(Videojuego videojuego) {
-        String sqlQuery = "UPDATE videojuego SET nombre_videojuego = '" + videojuego.getNomb_videojuego() + "', compania_juego = '"+
+        String sqlQuery = "UPDATE videojuego SET nom_videojuego = '" + videojuego.getNomb_videojuego() + "', compania_videojuego = '"+
             videojuego.getCompania_videojuego() + "', tipo_videojuego = '"+ videojuego.getTipo_videojuego()+ "' WHERE id_videojuego=" + videojuego.getId_videojuego() + ";";
         try {
             cone = cn.getConnection();
@@ -93,7 +93,7 @@ public class VideojuegoDAO implements CRUD{
         } catch (SQLException e) {
             System.out.println("Error x004 " + this.getClass() + " " + e);
         }
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override

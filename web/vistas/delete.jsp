@@ -9,9 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="Recursos/css/Main.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="container">
+            <h1>Esta seguro que desea eliminar este registro?</h1>
+            <div>
+
+            </div>
+        </div>
     </body>
 </html>
