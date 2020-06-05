@@ -25,6 +25,7 @@ public class Controlador extends HttpServlet {
     String list = "vistas/list.jsp";
     String add = "vistas/add.jsp";
     String edit = "vistas/edit.jsp";
+    String remove = "vistas/delete.jsp";
     Videojuego Vjuego = new Videojuego(); // obj videojuego
     VideojuegoDAO VjuegoDAO = new VideojuegoDAO(); // DAO funciones del CRUD
     /**
@@ -70,6 +71,7 @@ public class Controlador extends HttpServlet {
             VjuegoDAO.add(Vjuego);
             acceso=list; // Cambiando path de acceso 
         }else if(action.equalsIgnoreCase("edit")){
+            // crear parametro idJuego a partir del id de la tablaa que es enviado por la URI
             request.setAttribute("idJuego", request.getParameter("id"));
             acceso=edit; // path de la vista editar
         }else if(action.equalsIgnoreCase("actualizar")){
@@ -83,7 +85,14 @@ public class Controlador extends HttpServlet {
             Vjuego.setCompania_videojuego(companiajuego);
             Vjuego.setTipo_videojuego(tipojuego);
             VjuegoDAO.edit(Vjuego);
-            acceso=list; // Cambiar direccion
+            acceso = list; // Cambiar direccion
+        }else if(action.equalsIgnoreCase("remove")){
+            request.setAttribute("iddelete", request.getParameter("id"));
+            acceso=remove; // cambiando direccion
+        }else if(action.equalsIgnoreCase("delete")){
+            int idRemove = Integer.parseInt((String)request.getParameter("id"));
+            VjuegoDAO.delete(idRemove);
+            acceso = list;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

@@ -33,7 +33,6 @@
                 <input type="submit" onmouseenter="defecto();" name="accion" value="actualizar">
             </form>
         </div>
-
             <script src="Recursos/js/validadcion.js"></script>
     </body>
 </html>

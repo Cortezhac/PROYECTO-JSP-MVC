@@ -98,7 +98,15 @@ public class VideojuegoDAO implements CRUD{
 
     @Override
     public boolean delete(int id_videojuego) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sqlQuey = "DELETE FROM videojuego WHERE id_videojuego = " + id_videojuego + ";";
+        try {
+            cone = cn.getConnection();
+            sqlStatement = cone.prepareStatement(sqlQuey);
+            sqlStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error x 005 " + this.getClass() + " " + e);
+        }
+        return false;
     }
     
 }
